@@ -1,0 +1,179 @@
+/* Déclaration initiale */
+
+* {
+    box-sizing: border-box; /* box-sizing est appliqué à tous les éléments */
+}
+
+/* police d'écriture */
+
+body {
+    font-family: 'Raleway', sans-serif; /* type de police */
+    font-size: 15px; /* taille de la police */
+    padding-left: 40px;
+    padding-right: 40px;
+    min-height: 2000px;
+}
+
+main {
+    height: 2000px; /* hauteur du contenu principal de la page */
+}
+
+
+#html {
+    min-height: 10000px; 
+}
+/* Tout les flex */
+
+.flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexAround {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flexBetween {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flexColumnCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexColumnAround {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.flexColumnBetween {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* Détaille sur les liens */
+
+.tailleLien {
+    width: 100%;
+}
+
+.tailleLiens {
+    width: 120px;
+    height: 99px;
+    border-top: 1px solid white;
+}
+
+.tailleLiens:hover {
+    border-top: 1px solid #0065FC;
+}
+
+.margLogo {
+    margin-left: 40px;
+    width:40%;
+    height:90%;
+}
+
+.sizePopulaire{
+    flex: 1;
+    border-radius: 10px;
+}
+
+.blocPopulaires {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 25px;
+    margin-top: 25px;
+    height : 200px;
+    display: grid;
+}
+
+.flexLeft {
+    display: flex;
+}
+
+/* Couleurs */
+
+.color1 {   
+    color :#0065FC; /* couleur des liens */
+    text-decoration: none; /* désactive les décorations de texte tel que le soulignage */
+}
+
+.color2 {
+    background-color: #f2f2f2;
+}
+
+/* Hebergement */
+
+.blockHebergements {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 105%;
+    height: 250px; /* changement de la hauteur */
+    position: relative;
+    margin-left: -40px;
+    background-image: url("../image/jeu.jpg");
+    background-size: cover;
+    background-position: center center;
+}
+
+
+:link { 
+ text-decoration:none; 
+ width: 100%
+}
+
+/* footer */
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 105%;
+    height: 200px;
+    margin-left: -40px;
+    position: sticky;
+  }
+  
+ 
+.tailleBlockFooter {
+    height: 150px;
+}
+ 
+.margeBlockFoot1 {
+    margin-left: 5%;
+}
+ 
+.margeBlockFoot2{
+    margin-right: 15%;
+}
+
+.alignerText{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+ 
+.title {
+    width: 10%;
+    color: #0065FC;
+}
+
+.iframe {
+    margin-top: 10%;
+    width: 100%;
+}
+
+.tailleLiens {
+    width: 150px;
+    height: 99px;
+    border-top: 1px solid white;
+}

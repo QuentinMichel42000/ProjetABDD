@@ -1,0 +1,168 @@
+
+
+/* Déclaration initiale */
+
+* {
+    box-sizing: border-box; /* box-sizing est appliqué à tous les éléments */
+}
+
+/* police d'écriture */
+
+body {
+    font-family: 'Raleway', sans-serif; /* type de police */
+    font-size: 15px; /* taille de la police */
+}
+
+/* Tout les flex */
+
+.flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexAround {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flexBetween {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flexColumnCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexColumnAround {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.flexColumnBetween {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.BlockConnection{
+    flex: 2;
+    height: 75%;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    }
+
+.color2 {
+    background-color: white;
+}
+
+.titreConnexion {
+    padding-top: 3%;
+    color: #0065FC;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 80%;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    width: 300%;
+  }
+  
+  .form-label {
+    margin-bottom: 5px;
+  }
+  
+  .form-input {
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    width: 120%;
+  }
+  
+  .form-submit {
+    background-color: #0065FC;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 120%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form-submit:hover {
+    background-color: #0065FC;
+  }
+
+  .forgot-password {
+    font-size: 12px;
+    text-align: right;
+    color: #0065FC;
+    text-decoration: none;
+    width: 120%;
+    color: gray;
+    margin-bottom: 10%;
+}
+
+.forgot-password:hover {
+    text-decoration: underline
+}
+
+#username {
+  margin-bottom: 10%;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 10%;
+}
+
+input:focus {
+  outline: none;
+}
+
+.input-icon {
+  position: relative;
+}
+.input-icon input {
+  padding-left: 30px; /* ajuster la valeur selon l'espace dont vous avez besoin */
+}
+.input-icon i {
+  position: absolute;
+  left: 10px; /* ajuster la valeur selon l'espace dont vous avez besoin */
+  transform: translateY(-50%);
+}
+
+.background {
+  background-image: url("../image/toto.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  z-index: 2;  
+}
+
+

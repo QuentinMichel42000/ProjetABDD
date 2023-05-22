@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Games</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet"/> 
+    <script src="https://kit.fontawesome.com/a1232333dc.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="my-app/css/connexion.css"/>
+    <link rel="stylesheet" href="my-app/css/normalize.css"/>
+</head> 
+
+<body class="background">
+<main>
+  <section>
+  <div class="BlockConnection color2">
+    <h2 class="flexCenter titreConnexion">LOGIN</h2>
+    <div class="BlockConnection">
+      <img class="image" src="my-app\image\logo2.png" alt="Logo" />
+      <form action="/my-app/php/connexion.php" method="POST">
+        <div class="form-group">
+          <label for="username" class="form-label">Username :</label>
+          <input type="text" id="username" name="username" placeholder="Type your username" class="form-input">
+        </div>
+        <div class="form-group">
+          <label for="password" class="form-label">Password :</label>
+          <input type="password" id="password" name="password"  placeholder="Type your password" class="form-input">
+        </div>
+        <div class="form-group">
+          <a href="#" class="forgot-password">Forgot password</a>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Login" class="form-submit">
+        </div>
+      </form>      
+    </div>
+  </div>
+  </section>
+</main>
+</body>
+
+</html>

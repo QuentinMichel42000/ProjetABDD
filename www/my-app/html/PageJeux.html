@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <?php
+    session_name("authenticated");
+    session_start();
+    ?>
+
+<head>
+    <title>PROJET</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet"/> 
+    <script src="https://kit.fontawesome.com/a1232333dc.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/my-app/css/style.css">
+    <link rel="stylesheet" href="/my-app/css/normalize.css"/>
+    <script src="/my-app/JavaScript/impressionPDF.js"></script>
+    <script src="/my-app/JavaScript/impressionJeu.js"></script>
+</head> 
+
+<body> 
+    <header>
+    <div class="tailleLien flexBetween">
+        <div><img class="margLogo" alt="logoRservia" src="/my-app/image/logo2.png" width="120" height="50"></div>          
+        <div class="tailleLien12 flexCenter">
+            <div class="bordureNav tailleLiens flexCenter">
+                <div><a class="color1" href="/my-app/html/PageJeux.html">Liste des Jeux</a></div>
+            </div>
+            <div class="bordureNav tailleLiens flexCenter">
+                <div><a class="color1" href="">Rechercher un jeux</a></div>
+            </div>
+            <div class="bordureNav tailleLiens flexCenter">
+                <div><a class="color1" href="">Modification</a></div>
+            </div>
+            <div class="bordureNav tailleLiens flexCenter">
+                <div><a class="color1" href="">Profil</a></div>
+            </div>
+            <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] === true): ?>
+            <div class="bordureNav tailleLiens flexCenter">
+                <div><a class="color1" href="/my-app/html/pageAdmin.html">Admin</a></div>
+            </div>
+            <?php endif; ?>            
+            <div class="bordureNav tailleLiens flexCenter">
+                <div><a class="color1" href="/index.html">Déconnexion</a></div>
+            </div>
+        </div>
+    </div>
+    </header>
+    
+ <main>
+    <section>
+        <div class="margMobile">
+            <h1>Trouvez votre jeu préféré parmi des centaines de référence</h1>
+            <div class="bordureSearch flexCenter">
+                <div class="color2 flexCenter iconSize"><i class="fa-solid fa-location-dot"></i></div>
+                <div><input class="recherche flexCenter borderNone padding" type="search" value="Minecraft, Fifa2023 " /></div>
+                <div class="color3 flexCenter buttonSearch">
+                    <span class="mobileNone">Rechercher</span>
+                </div>
+            </div>
+
+    
+        <div class="textInformation">
+            <div class="iconInformation">
+                <i class="fa-solid fa-info iconInformationborder flexCenter" style="cursor: pointer"></i>
+            </div>
+            <br>
+            <p>Plus de 500 jeux sont disponibles sur notre site</p>  
+        </div> 
+    </section>
+    
+
+    <section id="hebergements" class="flexAround">
+        <div class="sizePopulaire blocPopulaires color2">
+            <div class="flexBetween">
+                <h2 class="tabletteSizeTitle texteGras">Les plus Populaires</h2>
+                <div>
+                <a class="addGame" href="PageAjoutJeux.html">Ajouter un jeu</a>
+                <button onclick="imprimerListeJeux()"><i class="fa-solid fa-print fa-lg"></i></button>
+                </div>
+            </div>
+
+            <!-- Box des jeux video -->
+            <div id="Impression" class="flexColumnAround">
+                
+            <!-- Box d'un jeux video -->
+            <?php include '../php/RecupJeux.php';?>
+            <?php while ($donnees = mysqli_fetch_assoc($resultat)): ?>
+            <div id="ImpressionJeu" class="blocPopulaires12 cubePopulaire flexLeft">
+                <div class="imgPopulaires1">
+                <img src="data:image/jpg;base64,<?php echo base64_encode($donnees['Image']); ?>" class="imageGame"/>
+                </div>
+                <div class="cubeDetailsPopulaires">
+                    <h3><?= $donnees['Nom'] ?></h3> 
+                    <p> <?= $donnees['editeur_nom'] ?></p>
+                    <p> <?= $donnees['type_nom'] ?></p>
+                    <p>Prix : <?= $donnees['Prix'] ?> </p>
+                    <p> <?= $donnees['Date_de_sortie'] ?></p>
+
+                    <!-- Etoiles note -->
+                    <div>
+                        <i class="fa-solid fa-star color1"></i>
+                        <i class="fa-solid fa-star color1"></i>
+                        <i class="fa-solid fa-star color1"></i>
+                        <i class="fa-solid fa-star color1"></i>
+                        <i class="fa-solid fa-star color1"></i>
+                    </div>                   
+                </div> 
+                <a href="../php/deleteGame.php?id=<?= $donnees['Id'] ?>">Supprimer</a>
+                <div class="">
+                    <button onclick="imprimerJeux()"><i class="fa-solid fa-print fa-lg"></i></button>
+                </div>
+            </div>
+            <?php endwhile; ?>
+            </div>
+        </div>
+    </section>
+
+    <div class="pagination flexcenter">
+        <?php if($page > 1): ?>
+            <a href="?page=<?php echo $page - 1; ?>">Précédent</a>
+        <?php endif; ?>
+        <div class="pageNumber">
+            <?php for($i = 1; $i <= $nombre_de_pages; $i++): ?>
+                <?php if($i == $page): ?>
+                    <span><?php echo $i; ?></span>
+                <?php else: ?>
+                    <a href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                <?php endif; ?>
+            <?php endfor; ?>
+        </div>
+        <?php if($page < $nombre_de_pages): ?>
+            <a href="?page=<?php echo $page + 1; ?>">Suivant</a>
+        <?php endif; ?>
+    </div>
+</main>
+
+
+<footer>
+    <div class="footer color2 flexBetween">
+        <div class="margeBlockFoot1 tailleBlockFooter" style="cursor: pointer">
+            <h3>A propos</h3>
+            <p>Fonctionnement du site</p>
+            <p>Condition général de vente</p>
+            <p>Données et confidentialité</p>
+        </div>
+        <div class="tailleBlockFooter" style="cursor: pointer">
+            <h3>Nos Hébergements</h3>
+            <p>Charte qualité</p>
+            <p>Soumettre votre hôtel</p>
+        </div>
+        <div class="margeBlockFoot2 tailleBlockFooter" style="cursor: pointer">                                 
+            <h3>Assitance</h3>
+            <p>Centre d'aide</p>
+            <p>Nous contacter</p>
+        </div>
+    </div>
+
+</footer>
+</body>
+</html>
+
+

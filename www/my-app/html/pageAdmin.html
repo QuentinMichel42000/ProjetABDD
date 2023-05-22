@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cours HTML et CSS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet"/> 
+    <script src="https://kit.fontawesome.com/a1232333dc.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/my-app/css/pageAdmin.css"/>
+    <link rel="stylesheet" href="/my-app/css/normalize.css"/>
+</head> 
+
+<body> 
+    <header>
+        <div class="tailleLien flexBetween">
+            <div><img class="margLogo" alt="logoRservia" src="/my-app/image/logo2.png" width="120" height="50"></div>          
+            <div class="tailleLien12 flexCenter">
+                <div class="bordureNav tailleLiens flexCenter">
+                    <div><a class="color1" href="/my-app/html/PageJeux.html">Liste des Jeux</a></div>
+                </div>
+                <div class="bordureNav tailleLiens flexCenter">
+                    <div><a class="color1" href="">Rechercher un jeux</a></div>
+                </div>
+                <div class="bordureNav tailleLiens flexCenter">
+                    <div><a class="color1" href="">Modification</a></div>
+                </div>
+                <div class="bordureNav tailleLiens flexCenter">
+                    <div><a class="color1" href="">Profil</a></div>
+                </div>
+                <div class="bordureNav tailleLiens flexCenter">
+                    <div><a class="color1" href="/my-app/html/pageAdmin.html">Admin</a></div>
+                </div>
+                <button onclick="window.print()">Imprimer</button>
+                <div class="bordureNav tailleLiens flexCenter">
+                    <div><a class="color1" href="/index.html">Déconnexion</a></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="flexColumnAround color2 blockHebergements">
+            <h1 class="title">Administration</h1>
+        </div>
+
+        <section id="hebergements" class="flexAround">
+            <div class="sizePopulaire blocPopulaires color2">
+                <div class="flexBetween">
+                    <h2 class="tabletteSizeTitle texteGras">Modification</h2>
+
+                    <?php
+                        $selectedUsername = "";
+
+                        if (isset($_GET['username'])) {
+                            $selectedUsername = $_GET['username'];
+                        }
+                    ?>
+
+                    <form action="../php/BloquerUser.php" method="post">
+                        <label for="Username">Username:</label>
+                        <input type="text" id="Username" name="Username" value="<?php echo $selectedUsername; ?>"><br><br>
+
+                        <label for="Lock">Lock:</label>
+                        <input type="checkbox" id="Lock" name="Lock"><br><br>
+
+                        <input type="submit" value="Modifier">
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Affiche les utilisateurs dans un tableau -->
+        <div class="iframe flexCenter">
+            <table>
+                <tr>
+                    <th>Username</th>
+                    <th>Lock</th>
+                </tr>
+                <?php
+                include '../php/listUser.php';
+                if ($entries["count"] > 0) {
+                    for ($i = 0; $i < $entries["count"]; $i++) {
+                        $username = $entries[$i]["name"][0];
+                        echo "<tr>";
+                        echo "<td><a href='?username=" . urlencode($username) . "'>" . $username . "</a></td>";
+                        echo "<td><input type='checkbox' id='maCase" . $i . "' name='maCase[]'></td>";
+                        echo "</tr>";
+                    }
+                }
+                ?>
+            </table>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer color2 flexBetween">
+            <div class="margeBlockFoot1 tailleBlockFooter">
+                <h3>A propos</h3>
+                <a class="color5" href="#"><p>Fonctionnement du site</p></a>
+                <a class="color5" href="#"><p>Condition général de vente</p></a>
+                <a class="color5" href="#"><p>Données et confidentialité</p></a>
+            </div>
+            <div class="tailleBlockFooter">
+                <h3>Nos Hébergements</h3>
+                <a class="color5" href="#"></p>Charte qualité</p></a>
+                <a class="color5" href="#"><p>Soumettre votre hôtel</p></a>
+            </div>
+            <div class="margeBlockFoot2 tailleBlockFooter">                                 
+                <h3>Assistance</h3>
+                <a class="color5" href="#"><p>Centre d'aide</p></a>
+                <a class="color5" href="#"><p>Nous contacter</p></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
